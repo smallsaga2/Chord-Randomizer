@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chord Randomizer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg">
+        <div class="border border-gray-300 p-4 mb-4">
+            <div class="text-center text-xl font-bold mb-2">Chord Randomizer</div>
+            <div class="flex justify-around text-lg">
+                <div id="chord" class="font-semibold">chord</div>
+                <div id="mn" class="font-semibold">M.n</div>
+                <div id="ab" class="font-semibold">A.B</div>
+            </div>
+        </div>
+        <button id="randomizeBtn" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">Randomize</button>
+    </div>
+
+    <script type="module">
+        const chords = ["C", "C#", "Dd", "D", "D#", "Eb", "E", "E#", "Fb", "F", "F#", "Gb", "G", "G#", "Ab", "A", "A#", "Bb", "B", "B#", "Cb"];
+        const mnOptions = ["Major", "minor"];
+        const abOptions = ["A", "B"];
+
+        const chordElement = document.getElementById('chord');
+        const mnElement = document.getElementById('mn');
+        const abElement = document.getElementById('ab');
+        const randomizeBtn = document.getElementById('randomizeBtn');
+
+        function getRandomElement(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        function randomize() {
+            chordElement.textContent = getRandomElement(chords);
+            mnElement.textContent = getRandomElement(mnOptions);
+            abElement.textContent = getRandomElement(abOptions);
+        }
+
+        randomizeBtn.addEventListener('click', randomize);
+    </script>
+</body>
+</html>
